@@ -10,7 +10,7 @@ class ThemeChanger with ChangeNotifier {
     this._themeData = theme;
   }
 
-   getTheme() {
+  getTheme() {
     return _themeData;
   }
 
