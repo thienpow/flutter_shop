@@ -9,12 +9,15 @@ void main() => runApp(
   
   MultiProvider(
       providers: [
-        
+        ChangeNotifierProvider<ThemeChanger>(builder: (_) => ThemeChanger(ThemeData.dark()),),
       ],
-      child: App(),
+      child: new App(),
   ),
   
 );
+
+/*
+**** this is no more needed because it can be placed into MultiProvider above.
 
 class App extends StatelessWidget {
   // This widget is the root of your application.
@@ -26,8 +29,9 @@ class App extends StatelessWidget {
     );
   }
 }
+*/
 
-class MaterialAppWithTheme extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
