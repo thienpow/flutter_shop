@@ -4,32 +4,26 @@ import 'package:provider/provider.dart';
 import 'package:flutter_shop/pages/home.dart';
 import 'package:flutter_shop/pages/settings.dart';
 import './theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(
-  
-  MultiProvider(
-      providers: [
-        ChangeNotifierProvider<ThemeChanger>(builder: (_) => ThemeChanger(ThemeData.dark()),),
-      ],
-      child: new App(),
-  ),
-  
-);
+void main() {
+  SharedPreferences.getInstance().then((prefs) {
 
-/*
-**** this is no more needed because it can be placed into MultiProvider above.
+    bool isThemeDark = prefs.getBool('isThemeDark');
+    if (isThemeDark == null)
+      isThemeDark = false;
 
-class App extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ThemeChanger>(
-      builder: (_) => ThemeChanger(ThemeData.dark()),
-      child: new MaterialAppWithTheme(),
+    runApp(
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider<ThemeChanger>(builder: (_) => ThemeChanger(isThemeDark ? ThemeData.dark() : ThemeData.light()),),
+          ],
+          child: new App(),
+      ),
     );
-  }
+  });
+  
 }
-*/
 
 class App extends StatelessWidget {
   @override
