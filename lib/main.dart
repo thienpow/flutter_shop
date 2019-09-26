@@ -5,6 +5,8 @@ import 'package:flutter_shop/pages/home.dart';
 import 'package:flutter_shop/pages/settings.dart';
 import './theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
 
 void main() {
   SharedPreferences.getInstance().then((prefs) {
@@ -29,7 +31,17 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
-
+    /*
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      //statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness:
+          Platform.isAndroid ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarDividerColor: Colors.grey,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ));
+    */
     return MaterialApp(
       theme: theme.getTheme(),
 
@@ -39,4 +51,6 @@ class App extends StatelessWidget {
       }
     );
   }
+
+
 }
