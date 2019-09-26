@@ -8,18 +8,16 @@ class Front extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      
+      body: Column(
           children: <Widget>[
-            new Text(
-              listType,
-              style: Theme.of(context).textTheme.display1,
-            ),
+            //getFeaturedSlider(context),
+            //getCategoryButtons(context),
+            //getTodayHotlist(context),
           ],
         ),
-      ),
     );
   }
+
 }
