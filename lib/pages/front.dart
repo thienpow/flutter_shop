@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../widgets/featuredCarousel.dart';
 
 class Front extends StatelessWidget {
 
@@ -12,7 +13,8 @@ class Front extends StatelessWidget {
       
       body: Column(
           children: <Widget>[
-            //getFeaturedSlider(context),
+            FeaturedCarousel(),
+            //CarouselWithIndicator(),
             //getCategoryButtons(context),
             //getTodayHotlist(context),
           ],
@@ -21,3 +23,4 @@ class Front extends StatelessWidget {
   }
 
 }
+

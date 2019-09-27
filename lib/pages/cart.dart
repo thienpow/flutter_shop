@@ -8,12 +8,12 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Center(
-        child: new Column(
+    return Scaffold(
+      body: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Text(
+            Text(
               listType,
               style: Theme.of(context).textTheme.display1,
             ),
