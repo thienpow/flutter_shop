@@ -133,6 +133,23 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
         _history = <String>['apple', 'orange', 'banana', 'watermelon'],
         super();
 
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    
+    assert(context != null);
+    final ThemeData theme = Theme.of(context);
+    assert(theme != null);
+    return theme.copyWith();
+    //if want to modify the search appbar then pass the parameters into the copyWith like below
+    /* .copyWith(
+      //primaryColor: ,
+      //primaryIconTheme: theme.primaryIconTheme.copyWith(color: Colors.grey),
+      //primaryColorBrightness: Brightness.light,
+      primaryTextTheme: theme.primaryTextTheme,
+    */
+    
+  }
+
   // Setting leading icon for the search bar.
   //Clicking on back arrow will take control to main page
   @override

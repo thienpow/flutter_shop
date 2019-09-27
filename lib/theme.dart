@@ -20,7 +20,10 @@ class ThemeChanger with ChangeNotifier {
     bool isThemeDark = theme == ThemeData.dark();
     await prefs.setBool('isThemeDark', isThemeDark);
 
-    _themeData = theme;
+    if (isThemeDark)
+      _themeData = theme;
+    else
+      _themeData = theme.copyWith(primaryColor: Colors.green); //Todo: here we can make it follow the options chosen by user instead of forcing light theme equal to green.
 
     notifyListeners();
   }
