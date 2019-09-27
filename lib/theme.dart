@@ -13,7 +13,7 @@ class ThemeChanger with ChangeNotifier {
   getTheme() {
 
     bool isThemeDark = _themeData == ThemeData.dark();
-
+    
     if (isThemeDark)
       return _themeData;
     else

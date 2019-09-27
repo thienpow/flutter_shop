@@ -9,7 +9,6 @@ import '../widgets/searchAppBar.dart';
 import 'package:english_words/english_words.dart' as words;
 
 class HomePage extends StatefulWidget {
-  
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -21,12 +20,10 @@ class _HomePageState extends State<HomePage> {
   PageController _pageController;
   int _currentPageIndex = 0;
 
-_HomePageState()
-      : kWords = List.from(Set.from(words.all))
-    ..sort(
-          (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase()),
-    ),
-        super();
+  _HomePageState() : kWords = List.from(Set.from(words.all))..sort(
+      (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase()),
+  ), 
+  super();
 
   @override
   void initState() {
@@ -98,15 +95,21 @@ _HomePageState()
     return Scaffold(
       body: Stack(children: 
         <Widget>[
-          Container(
-            decoration: BoxDecoration(
+          ClipPath(
+            clipper: BottomWaveClipper(),
+            child: Container(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.green[900], Colors.green[700]])),
-            height: MediaQuery.of(context).size.height * 0.3
+                    colors: [Colors.green[900], Colors.green[700]]
+                )
+              ),
+              height: MediaQuery.of(context).size.height * 0.3
+            ),
           ),
           Card(
+            //shape: CustomShapeBorder(),
             elevation: 0.0,
             color: Colors.transparent,
             margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 100.0),
@@ -150,4 +153,33 @@ _HomePageState()
       drawer: AppDrawer(),
     );
   }
+}
+
+
+class BottomWaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0.0, size.height - 20);
+
+    var firstControlPoint = Offset(size.width / 4, size.height);
+    var firstEndPoint = Offset(size.width / 2.25, size.height - 30.0);
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstEndPoint.dx, firstEndPoint.dy);
+
+    var secondControlPoint =
+        Offset(size.width - (size.width / 3.25), size.height - 65);
+    var secondEndPoint = Offset(size.width, size.height - 40);
+    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
+        secondEndPoint.dx, secondEndPoint.dy);
+
+    path.lineTo(size.width, size.height - 40);
+    path.lineTo(size.width, 0.0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
