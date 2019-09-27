@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shop/pages/front.dart';
 import 'package:flutter_shop/pages/snap.dart';
 import 'package:flutter_shop/pages/cart.dart';
+import 'package:flutter_shop/pages/account.dart';
 import 'package:flutter_shop/widgets/drawer.dart';
 import '../widgets/searchAppBar.dart';
 
@@ -66,21 +67,26 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  BottomNavigationBarItem getBottomNavigationBarItem(String name, bool isSelected) {
+    return BottomNavigationBarItem(
+          icon: ImageIcon(
+              AssetImage("assets/images/bottom/$name.png"),
+              color: isSelected ? Colors.red : Colors.black87,
+              size: 42.0,
+          ),
+          title: Text(''),
+        );
+  }
+
   Widget getBottomNavigationBar() {
     return BottomNavigationBar(
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
       items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          title: Text('FlutShop'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.camera),
-          title: Text('Snap'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle),
-          title: Text('Me'),
-        ),
+        getBottomNavigationBarItem('home', _currentPageIndex==0),
+        getBottomNavigationBarItem('category', _currentPageIndex==1),
+        getBottomNavigationBarItem('cart', _currentPageIndex==2),
+        getBottomNavigationBarItem('account', _currentPageIndex==3)
       ],
       currentIndex: _currentPageIndex,
       //selectedItemColor: Colors.amber[800],
@@ -120,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                   Front("Front screen"),
                   Snap("Snap screen"),
                   Cart("Cart screen"),
+                  Account("Account screen")
                 ],
                 onPageChanged: onPageChanged,
                 controller: _pageController,
