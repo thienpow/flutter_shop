@@ -11,7 +11,13 @@ class ThemeChanger with ChangeNotifier {
   }
 
   getTheme() {
-    return _themeData;
+
+    bool isThemeDark = _themeData == ThemeData.dark();
+
+    if (isThemeDark)
+      return _themeData;
+    else
+      return _themeData.copyWith(primaryColor: Colors.green);
   }
 
   setTheme(ThemeData theme) async {
