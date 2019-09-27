@@ -80,7 +80,8 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
           });
         },
       ),
-      Row(
+      Row( 
+        // the slider dots indicator here.
         mainAxisAlignment: MainAxisAlignment.center,
         children: map<Widget>(
           imgList,
@@ -92,8 +93,8 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _current == index
-                      ? Color.fromRGBO(0, 0, 0, 0.9)
-                      : Color.fromRGBO(0, 0, 0, 0.4)),
+                      ? Color.fromRGBO(153, 255, 51, 0.8)
+                      : Color.fromRGBO(0, 152, 51, 0.3)),
             );
           },
         ),

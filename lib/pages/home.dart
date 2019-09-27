@@ -69,55 +69,84 @@ _HomePageState()
     }
   }
 
+  Widget getBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text('FlutShop'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.camera),
+          title: Text('Snap'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle),
+          title: Text('Me'),
+        ),
+      ],
+      currentIndex: _currentPageIndex,
+      //selectedItemColor: Colors.amber[800],
+      onTap: _onBarItemTapped,
+      
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(
-        //automaticallyImplyLeading: false,
-        title: Text('FlutShop'),
-        actions: <Widget>[
-          //Adding the search widget in AppBar
-          IconButton(
-            tooltip: 'Search',
-            icon: const Icon(Icons.search),
-            //Don't block the main thread
-            onPressed: () {
-              showSearchPage(context, _searchDelegate);
-            },
+      body: Stack(children: 
+        <Widget>[
+          Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.green[900], Colors.green[700]])),
+            height: MediaQuery.of(context).size.height * 0.3
           ),
-        ],
-      ),
-      body: new PageView(
-        children: [
-          new Front("Front screen"),
-          new Snap("Snap screen"),
-          new Cart("Cart screen"),
-        ],
-        onPageChanged: onPageChanged,
-        controller: _pageController,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+          Card(
+            elevation: 0.0,
+            color: Colors.transparent,
+            margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 100.0),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+              child: PageView(
+                children: [
+                  Front("Front screen"),
+                  Snap("Snap screen"),
+                  Cart("Cart screen"),
+                ],
+                onPageChanged: onPageChanged,
+                controller: _pageController,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: AppBar(
+              title: Text('FlutShop'),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              actions: <Widget>[
+                //Adding the search widget in AppBar
+                IconButton(
+                  tooltip: 'Search',
+                  icon: const Icon(Icons.search),
+                  //Don't block the main thread
+                  onPressed: () {
+                    showSearchPage(context, _searchDelegate);
+                  },
+                ),
+              ],),),
         
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('FlutShop'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            title: Text('Snap'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            title: Text('Me'),
-          ),
         ],
-        currentIndex: _currentPageIndex,
-        //selectedItemColor: Colors.amber[800],
-        onTap: _onBarItemTapped,
-        
       ),
+      
+      bottomNavigationBar: getBottomNavigationBar(),
       drawer: AppDrawer(),
     );
   }

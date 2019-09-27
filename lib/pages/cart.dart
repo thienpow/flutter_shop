@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class Cart extends StatelessWidget {
 
-  Cart(this.listType);
-  final String listType;
-
+  final String title;
+  Cart(this.title);
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class Cart extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              listType,
+              title,
               style: Theme.of(context).textTheme.display1,
             ),
           ],

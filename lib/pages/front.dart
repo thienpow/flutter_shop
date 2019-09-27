@@ -4,14 +4,16 @@ import '../widgets/featuredCarousel.dart';
 
 class Front extends StatelessWidget {
 
-  Front(this.listType);
-  final String listType;
+  final String title;
+  Front(this.title);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: Colors.transparent,
+
       body: Column(
+          
           children: <Widget>[
             FeaturedCarousel(),
             //CarouselWithIndicator(),
