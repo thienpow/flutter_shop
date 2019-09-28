@@ -19,21 +19,24 @@ final List child = map<Widget>(
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
         child: Stack(children: <Widget>[
-          Image.network(i, fit: BoxFit.cover, width: 1000.0),
+          Image.network(i, fit: BoxFit.cover, width: 1500.0),
           Positioned(
+            top: 0.0,
             bottom: 0.0,
             left: 0.0,
             right: 0.0,
             child: Container(
-            
+              
               decoration: BoxDecoration(
+                color: Colors.grey,
                 gradient: LinearGradient(
-                  colors: [Color.fromARGB(200, 0, 0, 0), Color.fromARGB(0, 0, 0, 0)],
+                  colors: [Color.fromARGB(10, 0, 0, 0), Color.fromARGB(0, 0, 0, 0)],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              /*
               child: Text(
                 '',
                 style: TextStyle(
@@ -42,6 +45,7 @@ final List child = map<Widget>(
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              */
             ),
           ),
         ]),
@@ -71,13 +75,11 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      
-      children: [
+      children: <Widget>[
         CarouselSlider(
           items: child,
           autoPlay: true,
           enlargeCenterPage: true,
-          aspectRatio: 2.0,
           onPageChanged: (index) {
             setState(() {
               _current = index;
@@ -93,7 +95,7 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
               return Container(
                 width: 8.0,
                 height: 8.0,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                margin: EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _current == index
@@ -105,7 +107,7 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
         ),
         
       ],
-
+      
     );
   }
 }

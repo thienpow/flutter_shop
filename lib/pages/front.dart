@@ -17,10 +17,11 @@ class Front extends StatelessWidget {
           slivers: <Widget>[
             SliverAppBar(
               backgroundColor: Colors.transparent,
-              expandedHeight: 250.0,
+              expandedHeight: 320.0,
               snap: true,
               floating: true,
               pinned: false,
+              primary: false,
               flexibleSpace: FeaturedCarousel(),
             ),
             SliverFillRemaining(
