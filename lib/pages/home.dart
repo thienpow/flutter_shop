@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.transparent,
             margin: EdgeInsets.only(left: 0.0, right: 0.0, top: 100.0),
             child: Padding(
-              padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+              padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
               child: PageView(
                 children: [
                   Front("Front screen"),
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            top: 0.0,
+            //top: 0.0,
             left: 0.0,
             right: 0.0,
             child: AppBar(
