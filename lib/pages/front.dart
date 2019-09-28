@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/widgets/featuredCarousel.dart';
 import '../widgets/featuredCarousel.dart';
 
 class Front extends StatelessWidget {
@@ -11,13 +12,26 @@ class Front extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-
-      body: Column(
-          
-          children: <Widget>[
-            FeaturedCarousel(),
-            getCategoryButtons(),
-            //getTodayHotlist(context),
+      body: CustomScrollView(
+        
+          slivers: <Widget>[
+            SliverAppBar(
+              backgroundColor: Colors.transparent,
+              expandedHeight: 250.0,
+              snap: true,
+              floating: true,
+              pinned: false,
+              flexibleSpace: FeaturedCarousel(),
+            ),
+            SliverFillRemaining(
+              child: Column(
+                children: <Widget>[
+                  getCategoryButtons(),
+                  //getTodayHotlist(),
+                ],
+              ) 
+            ),
+            
           ],
         ),
     );
@@ -38,14 +52,10 @@ class Front extends StatelessWidget {
     return Container(
       alignment: FractionalOffset.center,
           child: Column(
-            
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(flex: 1, child: Container(),),
+              SizedBox(height: 10),
+              Wrap(children: <Widget>[
                   getRoundButton('allcat'),
                   SizedBox(width: 10),
                   getRoundButton('mencloth'),
@@ -55,14 +65,10 @@ class Front extends StatelessWidget {
                   getRoundButton('sports'),
                   SizedBox(width: 10),
                   getRoundButton('electronics'),
-                  Expanded(flex: 1, child: Container(),),
                 ]
               ),
               SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(flex: 1, child: Container(),),
+              Wrap(children: <Widget>[
                   getRoundButton('phone'),
                   SizedBox(width: 10),
                   getRoundButton('computer'),
@@ -72,10 +78,12 @@ class Front extends StatelessWidget {
                   getRoundButton('jewellery'),
                   SizedBox(width: 10),
                   getRoundButton('garden'),
-                  Expanded(flex: 1, child: Container(),),
-              ],)
+                ]
+              ),
+              //Expanded(flex: 1, child: Container(),),
             ]
           ),
+              
         );
   }
 }
