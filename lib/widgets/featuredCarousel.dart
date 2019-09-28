@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgList = [
-  'https://www.theyucatantimes.com/wp-content/uploads/2017/11/Singles-Day.jpg',
-  'https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/52/522/522794/flat-product-sale-shoe-banner-p1-o.jpg?1434193319',
-  'https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/52/522/522786/flat-product-sale-mobile-banner-p1-f.jpg?1434193356'
+  'https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/522786/3000/1997/m1/fpnw/wm0/flat-product-sale-mobile-banner-p1-.jpg?1434193356&s=5c40522be1701b2ce7b3c617b12fa70b',
+  'https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/522794/3000/1997/m1/fpnw/wm0/flat-product-sale-shoe-banner-p1-.jpg?1434193319&s=5e32357a0be6ce6fded220d5ad54624f',
+  'https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/6546124/1170/780/m1/fpnw/wm0/tropical-06-.jpg?1560625192&s=8437fcb4adf8a74950bb4d778b16d4a0'
 ];
 
 final Widget placeholder = Container(color: Colors.grey);
