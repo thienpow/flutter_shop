@@ -15,7 +15,7 @@ final List child = map<Widget>(
   (index, i) {
     return Container(
       color: Colors.transparent,
-      margin: EdgeInsets.all(6.0),
+      margin: EdgeInsets.fromLTRB(6.0, 0.0, 6.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
         child: Stack(children: <Widget>[

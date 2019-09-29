@@ -14,12 +14,12 @@ class Front extends StatefulWidget {
 }
 
 class _FrontState extends State<Front> {
-final List<String> kWords;
-  SearchAppBarDelegate _searchDelegate;
 
-  _FrontState() : kWords = List.from(Set.from(words.all))..sort(
-      (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase()),
-  ), super();
+  final List<String> kWords = List.from(Set.from(words.all))..sort(
+      (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase())
+  );
+
+  SearchAppBarDelegate _searchDelegate;
   
   @override 
   void initState() {
@@ -99,7 +99,7 @@ final List<String> kWords;
         
           slivers: <Widget>[
             SliverPersistentHeader(
-              delegate: MySliverAppBar(280, this),
+              delegate: MySliverAppBar(250, this),
               pinned: true,
             ),
             SliverList(
@@ -112,8 +112,11 @@ final List<String> kWords;
 
   List _buildList(BuildContext context, int count) {
     List<Widget> listItems = List();
-    //this is required to push the list lower at 220px more.
-    listItems.add(SizedBox(height: 250,));
+    
+    //***********  this is required to push the list lower at 220px more. ***********
+    listItems.add(SizedBox(height: 280,));
+
+
     for (int i = 0; i < count; i++) {
       listItems.add(
         Padding(padding: EdgeInsets.all(0.0),
@@ -238,46 +241,46 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
 
         // ********* Green Background ************
         ClipPath(
-          clipper: BottomWaveClipper(),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.green[900], Colors.green[700]]
-              )
-            ),
-            height: MediaQuery.of(context).size.height * 0.3
-          ),
-        ),
-      
-        // ********* Search Button ************
-        Positioned(
-          //top: 0.0,
-          left: 0.0,
-          right: 0.0,
-          child: AppBar(
-            title: parent.getDummySearchButton(),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            actions: <Widget>[
-              //Adding the search widget in AppBar
-              //TODO: add important shortcut action here, either wallet or cart.
+            clipper: BottomWaveClipper(),
+            child: Container(
+              
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.green[900], Colors.green[700]]
+                )
+              ),
+              height: MediaQuery.of(context).size.height * 0.3,
 
-            ],
-          ),
+              // ********* Search Button ************
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  AppBar(
+                    title: parent.getDummySearchButton(),
+                    backgroundColor: Colors.transparent,
+                    elevation: 0.0,
+                    actions: <Widget>[
+                      //Adding the search widget in AppBar
+                      //TODO: add important shortcut action here, either wallet or cart.
+                    ],
+                  ),
+                  
+                ],
+              ),
+            ),
         ),
 
         // ********* Category Round Buttons ************
         Positioned(
-          top: 370 - shrinkOffset * .8,
+          top: 380 - shrinkOffset * 1.1,
           left: MediaQuery.of(context).size.width * .05,
           child: Card(
               //color: Colors.green[800],
               color: Colors.transparent,
               elevation: 0,
               child: SizedBox(
-              
                 height: 130,
                 width: MediaQuery.of(context).size.width * .9,
                 child: getCategoryButtons(),
@@ -286,22 +289,20 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
         ),
 
         // ********* Featured Slides ************
+        
         Positioned(
-          top: 78,
-          left: -4,
+          top: 92,
+          bottom: -110,
           child: Opacity(
             opacity: (1 - shrinkOffset / expandedHeight),
-            child: Card(
-              color: Colors.transparent,
-              elevation: 0,
-              child: SizedBox(
+            child: SizedBox(
                 height: expandedHeight -10,
                 width: MediaQuery.of(context).size.width,
                 child: FeaturedCarousel(),
               ),
-            ),
           ),
         ),
+        
       ],
     );
   }
@@ -310,7 +311,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
   double get maxExtent => expandedHeight;
 
   @override
-  double get minExtent => 280;
+  double get minExtent => 250;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;

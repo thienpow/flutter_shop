@@ -83,16 +83,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget getBody() {
-    return PageView(
-                children: [
-                  Front(),
-                  Snap("Snap screen"),
-                  Cart("Cart screen"),
-                  Account("Account screen")
-                ],
-                onPageChanged: onPageChanged,
-                controller: _pageController,
-              );
+    return 
+      PageView(
+        children: [
+          Front(),
+          Snap("Snap screen"),
+          Cart("Cart screen"),
+          Account("Account screen")
+        ],
+        onPageChanged: onPageChanged,
+        controller: _pageController,
+      );
   }
 }
 
