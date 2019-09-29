@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
               title: Container(
 
                 color: Colors.transparent,
-                width: MediaQuery.of(context).size.width * 0.6,
+                width: MediaQuery.of(context).size.width * 0.68,
                 height: 30,
 
                 child:
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                           "mate 30",
                           style: TextStyle(fontSize: 12.0),
                         ),
-                        SizedBox(width: 100,),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.35,),
                         ImageIcon(
                           AssetImage("assets/images/search.png"),
                           color: Colors.white,
