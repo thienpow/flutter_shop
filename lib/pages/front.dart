@@ -235,36 +235,40 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
       fit: StackFit.expand,
       overflow: Overflow.visible,
       children: [
+
+        // ********* Green Background ************
         ClipPath(
-            clipper: BottomWaveClipper(),
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.green[900], Colors.green[700]]
-                )
-              ),
-              height: MediaQuery.of(context).size.height * 0.3
+          clipper: BottomWaveClipper(),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.green[900], Colors.green[700]]
+              )
             ),
+            height: MediaQuery.of(context).size.height * 0.3
           ),
-          
-          Positioned(
-            //top: 0.0,
-            left: 0.0,
-            right: 0.0,
-            child: AppBar(
-              title: parent.getDummySearchButton(),
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
-              actions: <Widget>[
-                //Adding the search widget in AppBar
-                //TODO: add important shortcut action here, either wallet or cart.
+        ),
+      
+        // ********* Search Button ************
+        Positioned(
+          //top: 0.0,
+          left: 0.0,
+          right: 0.0,
+          child: AppBar(
+            title: parent.getDummySearchButton(),
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            actions: <Widget>[
+              //Adding the search widget in AppBar
+              //TODO: add important shortcut action here, either wallet or cart.
 
-              ],
-            ),
+            ],
           ),
+        ),
 
+        // ********* Category Round Buttons ************
         Positioned(
           top: 370 - shrinkOffset * .8,
           left: MediaQuery.of(context).size.width * .05,
@@ -280,17 +284,19 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
               ),
           ),
         ),
+
+        // ********* Featured Slides ************
         Positioned(
-          top: 88,
-          left: MediaQuery.of(context).size.width * .05,
+          top: 78,
+          left: -4,
           child: Opacity(
             opacity: (1 - shrinkOffset / expandedHeight),
             child: Card(
               color: Colors.transparent,
               elevation: 0,
               child: SizedBox(
-                height: expandedHeight,
-                width: MediaQuery.of(context).size.width * .9,
+                height: expandedHeight -10,
+                width: MediaQuery.of(context).size.width,
                 child: FeaturedCarousel(),
               ),
             ),

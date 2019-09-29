@@ -15,7 +15,7 @@ final List child = map<Widget>(
   (index, i) {
     return Container(
       color: Colors.transparent,
-      margin: EdgeInsets.all(5.0),
+      margin: EdgeInsets.all(6.0),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
         child: Stack(children: <Widget>[
@@ -35,7 +35,7 @@ final List child = map<Widget>(
                   end: Alignment.topCenter,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
               /*
               child: Text(
                 '',
@@ -86,6 +86,8 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
             });
           },
         ),
+
+        /*
         Row( 
           // the slider dots indicator here.
           mainAxisAlignment: MainAxisAlignment.center,
@@ -105,6 +107,7 @@ class _FeaturedCarouselState extends State<FeaturedCarousel> {
             },
           ),
         ),
+        */
         
       ],
       
