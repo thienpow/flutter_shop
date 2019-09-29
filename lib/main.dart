@@ -31,18 +31,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
-    /*
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      //statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness:
-          Platform.isAndroid ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarDividerColor: Colors.grey,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ));
-    */
+    
     return MaterialApp(
+      //debugShowCheckedModeBanner: false,
+
       theme: theme.getTheme(),
 
       routes: {

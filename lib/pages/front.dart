@@ -1,41 +1,181 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/widgets/bottomWave.dart';
 import 'package:flutter_shop/widgets/featuredCarousel.dart';
+import 'package:flutter_shop/widgets/searchAppBar.dart';
 import '../widgets/featuredCarousel.dart';
 
-class Front extends StatelessWidget {
+import 'package:english_words/english_words.dart' as words;
 
-  final String title;
-  Front(this.title);
+
+class Front extends StatefulWidget {
+  @override
+  _FrontState createState() => _FrontState();
+}
+
+class _FrontState extends State<Front> {
+final List<String> kWords;
+  SearchAppBarDelegate _searchDelegate;
+
+  _FrontState() : kWords = List.from(Set.from(words.all))..sort(
+      (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase()),
+  ), super();
+  
+  @override 
+  void initState() {
+    super.initState();
+    _searchDelegate = SearchAppBarDelegate(kWords);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+  
+
+  //Shows Search result
+  void showSearchPage(BuildContext context,
+    SearchAppBarDelegate searchDelegate) async {
+    final String selected = await showSearch<String>(
+      context: context,
+      delegate: searchDelegate,
+    );
+
+    if (selected != null) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Your Word Choice: $selected'),
+        ),
+      );
+    }
+  }
+
+  Widget getDummySearchButton() {
+    return Container(
+
+      color: Colors.transparent,
+      width: MediaQuery.of(context).size.width * 0.68,
+      height: 36,
+
+      child:
+      FlatButton(
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(30.0),
+        ),
+        color: Colors.green[800],
+        textColor: Colors.grey,
+        disabledColor: Colors.grey,
+        disabledTextColor: Colors.black,
+        padding: EdgeInsets.fromLTRB(30, 2, 10, 2),
+        onPressed: () {
+          showSearchPage(context, _searchDelegate);
+        },
+        child: Row(
+          children: <Widget>[
+            Text(
+              "mate 30",
+              style: TextStyle(fontSize: 12.0),
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.35,),
+            ImageIcon(
+              AssetImage("assets/images/search.png"),
+              color: Colors.white,
+              size: 42.0,
+            ),
+
+          ],
+        ),),
+
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      //resizeToAvoidBottomPadding: false,
+      //backgroundColor: Colors.transparent,
       body: CustomScrollView(
         
           slivers: <Widget>[
-            SliverAppBar(
-              backgroundColor: Colors.transparent,
-              expandedHeight: 320.0,
-              snap: true,
-              floating: true,
-              pinned: false,
-              primary: false,
-              flexibleSpace: FeaturedCarousel(),
+            SliverPersistentHeader(
+              delegate: MySliverAppBar(280, this),
+              pinned: true,
             ),
-            SliverFillRemaining(
-              child: Column(
-                children: <Widget>[
-                  getCategoryButtons(),
-                  getTodayHotList(),
-                ],
-              ) 
+            SliverList(
+              delegate: SliverChildListDelegate(_buildList(context, 50))
             ),
-            
           ],
         ),
     );
+  }
+
+  List _buildList(BuildContext context, int count) {
+    List<Widget> listItems = List();
+    //this is required to push the list lower at 220px more.
+    listItems.add(SizedBox(height: 250,));
+    for (int i = 0; i < count; i++) {
+      listItems.add(
+        Padding(padding: EdgeInsets.all(0.0),
+          child: getTodayHotList(context)
+      ));
+    }
+    return listItems;
+  }
+
+  Widget getTodayHotList(BuildContext context) {
+    
+    double width = MediaQuery.of(context).size.width;
+    
+    return Container(
+      width: width * 1.0,
+      padding: EdgeInsets.fromLTRB(width * 0.1, 0, width * 0.1, 0),
+      alignment: FractionalOffset.center,
+      child: Column(
+        children: <Widget>[
+            Row(
+              children: <Widget>[
+                getProductCard(context, "Apple iPhone 11"),
+                getProductCard(context, "Huawei Mate 30"),
+              ],
+            ),
+        ],
+      ),
+    );
+    
+    
+  }
+
+  Widget getProductCard(BuildContext context, String name) {
+    double width = MediaQuery.of(context).size.width;
+    return Container(
+      
+      width: width * .4,
+      padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+        alignment: FractionalOffset.center,
+        child: Card(
+          child: InkWell(
+            splashColor: Colors.blue.withAlpha(30),
+            onTap: () {
+              print('Card tapped.');
+            },
+            child: Container(
+              width: 300,
+              height: 100,
+              child: Text('$name'),
+            ),),
+          
+        ),
+    );
+  }
+}
+
+class MySliverAppBar extends SliverPersistentHeaderDelegate {
+  double expandedHeight;
+  _FrontState parent;
+  MySliverAppBar(double expandedHeight, _FrontState parent) { 
+      this.expandedHeight = expandedHeight;
+      this.parent = parent;
   }
 
   Widget getRoundButton(String name) {
@@ -52,7 +192,7 @@ class Front extends StatelessWidget {
 
   Widget getCategoryButtons() {
     return Container(
-      alignment: FractionalOffset.center,
+      //alignment: FractionalOffset.center,
       child: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -88,19 +228,84 @@ class Front extends StatelessWidget {
     );
   }
 
-  Widget getTodayHotList() {
-    return Container(
-        alignment: FractionalOffset.center,
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Stack(
+      fit: StackFit.expand,
+      overflow: Overflow.visible,
+      children: [
+        ClipPath(
+            clipper: BottomWaveClipper(),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.green[900], Colors.green[700]]
+                )
+              ),
+              height: MediaQuery.of(context).size.height * 0.3
+            ),
+          ),
+          
+          Positioned(
+            //top: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: AppBar(
+              title: parent.getDummySearchButton(),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              actions: <Widget>[
+                //Adding the search widget in AppBar
+                //TODO: add important shortcut action here, either wallet or cart.
 
               ],
-            )
-          ],
+            ),
+          ),
+
+        Positioned(
+          top: 370 - shrinkOffset * .8,
+          left: MediaQuery.of(context).size.width * .05,
+          child: Card(
+              //color: Colors.green[800],
+              color: Colors.transparent,
+              elevation: 0,
+              child: SizedBox(
+              
+                height: 130,
+                width: MediaQuery.of(context).size.width * .9,
+                child: getCategoryButtons(),
+              ),
+          ),
         ),
+        Positioned(
+          top: 88,
+          left: MediaQuery.of(context).size.width * .05,
+          child: Opacity(
+            opacity: (1 - shrinkOffset / expandedHeight),
+            child: Card(
+              color: Colors.transparent,
+              elevation: 0,
+              child: SizedBox(
+                height: expandedHeight,
+                width: MediaQuery.of(context).size.width * .9,
+                child: FeaturedCarousel(),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
-}
 
+  @override
+  double get maxExtent => expandedHeight;
+
+  @override
+  double get minExtent => 280;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
+}
