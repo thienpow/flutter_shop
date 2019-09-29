@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _pageController = new PageController();
+    _pageController = PageController();
     
     _searchDelegate = SearchAppBarDelegate(kWords);
   }
@@ -133,25 +133,57 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+
           Positioned(
             //top: 0.0,
             left: 0.0,
             right: 0.0,
             child: AppBar(
-              title: Text('FlutShop'),
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
-              actions: <Widget>[
-                //Adding the search widget in AppBar
-                IconButton(
-                  tooltip: 'Search',
-                  icon: const Icon(Icons.search),
-                  //Don't block the main thread
-                  onPressed: () {
-                    showSearchPage(context, _searchDelegate);
-                  },
+              title: Container(
+
+                color: Colors.transparent,
+                width: MediaQuery.of(context).size.width * 0.6,
+                height: 30,
+
+                child:
+                FlatButton(
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),
+                    ),
+                    color: Colors.green[800],
+                    textColor: Colors.grey,
+                    disabledColor: Colors.grey,
+                    disabledTextColor: Colors.black,
+                    padding: EdgeInsets.fromLTRB(30, 2, 10, 2),
+                    onPressed: () {
+                        showSearchPage(context, _searchDelegate);
+                      },
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          "mate 30",
+                          style: TextStyle(fontSize: 12.0),
+                        ),
+                        SizedBox(width: 100,),
+                        ImageIcon(
+                          AssetImage("assets/images/search.png"),
+                          color: Colors.white,
+                          size: 42.0,
+                        ),
+
+                      ],
+                    ),),
+
                 ),
-              ],),),
+
+                backgroundColor: Colors.transparent,
+                elevation: 0.0,
+                actions: <Widget>[
+                //Adding the search widget in AppBar
+
+                ],),
+              ),
+
         
         ],
       ),
