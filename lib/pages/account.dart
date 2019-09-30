@@ -68,7 +68,7 @@ class _AccountPageState extends State<AccountPage> {
         child: AppBar(
           backgroundColor: Theme.of(context).primaryColor,
           titleSpacing: 20.0,
-          elevation: appBarElevation,
+          //elevation: appBarElevation,
           title: Text("Account"),
         ),
       ),
