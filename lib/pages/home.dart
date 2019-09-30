@@ -6,6 +6,9 @@ import 'package:flutter_shop/pages/cart.dart';
 import 'package:flutter_shop/pages/account.dart';
 import 'package:flutter_shop/widgets/drawer.dart';
 
+import 'package:provider/provider.dart';
+import '../theme.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -15,6 +18,9 @@ class _HomePageState extends State<HomePage> {
   
   PageController _pageController;
   int _currentPageIndex = 0;
+
+  bool _isThemeDark = false;
+  ThemeChanger _themeChanger;
 
   _HomePageState() :
   super();
@@ -33,7 +39,9 @@ class _HomePageState extends State<HomePage> {
   }
   
   void _onBarItemTapped(int index) {
-    _pageController.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.ease);
+    _pageController.jumpToPage(index);
+    //TODO: just in case you love animation for the page transition... use the line below.
+    //_pageController.animateToPage(index, duration: const Duration(milliseconds: 10), curve: Curves.fastOutSlowIn);
   }
 
   void onPageChanged(int index) {
@@ -46,7 +54,7 @@ class _HomePageState extends State<HomePage> {
     return BottomNavigationBarItem(
           icon: ImageIcon(
               AssetImage("assets/images/bottom/$name.png"),
-              color: isSelected ? Colors.red : Colors.black87,
+              color: isSelected ? Colors.red : (_isThemeDark ? Colors.white70 : Colors.black87),
               size: 42.0,
           ),
           title: Text(''),
@@ -73,6 +81,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     
+    _themeChanger = Provider.of<ThemeChanger>(context);
+    _isThemeDark = _themeChanger.getTheme() == ThemeData.dark();
+
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       body: getBody(),
