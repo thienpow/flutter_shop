@@ -67,7 +67,7 @@ class _AccountPageState extends State<AccountPage> {
         preferredSize: Size.fromHeight(appBarHeight),
         child: AppBar(
           backgroundColor: Theme.of(context).primaryColor,
-          titleSpacing: 0.0,
+          titleSpacing: 20.0,
           elevation: appBarElevation,
           title: Text("Account"),
         ),

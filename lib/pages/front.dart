@@ -51,10 +51,12 @@ class _FrontPageState extends State<FrontPage> {
   }
 
   Widget getDummySearchButton() {
+    double width = MediaQuery.of(context).size.width;
+    double buttonWidth = width * 0.9;
     return Container(
-
+      padding: EdgeInsets.fromLTRB(width * .05, 0, width * .05, 0),
       color: Colors.transparent,
-      width: MediaQuery.of(context).size.width * 0.68,
+      width: buttonWidth,
       height: 36,
 
       child:
@@ -66,17 +68,17 @@ class _FrontPageState extends State<FrontPage> {
         textColor: Colors.grey,
         disabledColor: Colors.grey,
         disabledTextColor: Colors.black,
-        padding: EdgeInsets.fromLTRB(30, 2, 10, 2),
+        padding: EdgeInsets.fromLTRB(buttonWidth * .08, 2, buttonWidth * .05, 2),
         onPressed: () {
           showSearchPage(context, _searchDelegate);
         },
         child: Row(
           children: <Widget>[
-            Text(
-              "mate 30",
-              style: TextStyle(fontSize: 12.0),
+            
+            Expanded(
+              child: Text("mate 30", style: TextStyle(fontSize: 12.0),),
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.35,),
+
             ImageIcon(
               AssetImage("assets/images/search.png"),
               color: Colors.white,

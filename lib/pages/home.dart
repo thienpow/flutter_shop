@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shop/pages/front.dart';
 import 'package:flutter_shop/pages/snap.dart';
 import 'package:flutter_shop/pages/cart.dart';
+import 'package:flutter_shop/pages/chat.dart';
 import 'package:flutter_shop/pages/account.dart';
 import 'package:flutter_shop/widgets/drawer.dart';
 
@@ -69,7 +70,8 @@ class _HomePageState extends State<HomePage> {
         getBottomNavigationBarItem('home', _currentPageIndex==0),
         getBottomNavigationBarItem('category', _currentPageIndex==1),
         getBottomNavigationBarItem('cart', _currentPageIndex==2),
-        getBottomNavigationBarItem('account', _currentPageIndex==3)
+        getBottomNavigationBarItem('chat', _currentPageIndex==3),
+        getBottomNavigationBarItem('account', _currentPageIndex==4)
       ],
       currentIndex: _currentPageIndex,
       //selectedItemColor: Colors.amber[800],
@@ -100,6 +102,7 @@ class _HomePageState extends State<HomePage> {
           FrontPage(),
           Snap("Snap screen"),
           Cart("Cart screen"),
+          ChatPage("Chat screen"),
           AccountPage()
         ],
         onPageChanged: onPageChanged,
