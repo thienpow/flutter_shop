@@ -51,10 +51,12 @@ class _FrontPageState extends State<FrontPage> {
   }
 
   Widget getDummySearchButton() {
+
     double width = MediaQuery.of(context).size.width;
-    double buttonWidth = width * 0.9;
+    double buttonWidth = width * .9;
+
     return Container(
-      padding: EdgeInsets.fromLTRB(width * .05, 0, width * .05, 0),
+      padding: EdgeInsets.fromLTRB(width * .1, 0, width * .08, 0),
       color: Colors.transparent,
       width: buttonWidth,
       height: 36,
