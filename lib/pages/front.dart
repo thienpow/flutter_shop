@@ -119,14 +119,8 @@ class _FrontPageState extends State<FrontPage> {
     
     //***********  this is required to push the list lower at 220px more. ***********
     listItems.add(SizedBox(height: 280,));
+    listItems.add(getTodayHotList(context));
 
-
-    for (int i = 0; i < count; i++) {
-      listItems.add(
-        Padding(padding: EdgeInsets.all(0.0),
-          child: getTodayHotList(context)
-      ));
-    }
     return listItems;
   }
 
@@ -135,44 +129,83 @@ class _FrontPageState extends State<FrontPage> {
     double width = MediaQuery.of(context).size.width;
     
     return Container(
-      width: width * 1.0,
-      padding: EdgeInsets.fromLTRB(width * 0.1, 0, width * 0.1, 0),
-      alignment: FractionalOffset.center,
-      child: Column(
+      width: width,
+      padding: EdgeInsets.fromLTRB(width * .05, 0, width *.05, 0),
+      child: Row(
         children: <Widget>[
-            Row(
-              children: <Widget>[
-                getProductCard(context, "Apple iPhone 11"),
-                getProductCard(context, "Huawei Mate 30"),
-              ],
-            ),
+          Wrap(
+            direction: Axis.vertical,
+            alignment: WrapAlignment.start,
+            spacing: 2.0,
+            runSpacing: 20.0,
+
+            children: <Widget>[
+              getProductCard(context, "Apple iPhone 11", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ficdn4.digitaltrends.com%2Fimage%2Fiphone-11r-3-1500x1500.jpg&f=1&nofb=1"),
+              getProductCard(context, "Mi Mix Alpha", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fphone.mesramobile.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fxiaomi-mi-mix-alpha-price-malaysia-1.jpg&f=1&nofb=1"),
+              getProductCard(context, "OPPO R17", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.xda-developers.com%2Ffiles%2F2018%2F08%2FOPPO-R17.jpg&f=1&nofb=1"),
+
+              getProductCard(context, "Huawei Mate 30", "https://www.notebookcheck.com/fileadmin/Notebooks/News/_nc3/Huawei_Mate_30_Glas_Unibody_NBClogo_2.jpg"),
+              getProductCard(context, "Huawei P30 Pro", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
+              getProductCard(context, "VIVO NEX 3", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fpropakistani.pk%2Fprice%2Fwp-content%2Fuploads%2F2018%2F06%2Fvivo-nex-s2-1-1.jpg&f=1&nofb=1"),
+
+              getProductCard(context, "Huawei P30 Pro", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
+              getProductCard(context, "NEX 3 5G", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fpocketnow.com%2Fwp-content%2Fuploads%2F2019%2F09%2F0079Fyh9ly1g6n8wce3s1j30u01hcqe5.jpg&f=1&nofb=1"),
+              getProductCard(context, "Apple iPhone 11", "https://static.esrgear.com/wp-content/uploads/2019/08/iPhone-11-Pro-Essential-Zero-Case-6.jpg"),
+            ],
+          ), 
+          Wrap(
+            direction: Axis.vertical,
+            alignment: WrapAlignment.start,
+            spacing: 2.0,
+            runSpacing: 20.0,
+            children: <Widget>[              
+              getProductCard(context, "Mi Mix Alpha", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fphone.mesramobile.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fxiaomi-mi-mix-alpha-price-malaysia-1.jpg&f=1&nofb=1"),
+              getProductCard(context, "Huawei P30 Pro", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
+              getProductCard(context, "Mi Mix Alpha", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fphone.mesramobile.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fxiaomi-mi-mix-alpha-price-malaysia-1.jpg&f=1&nofb=1"),
+              
+              getProductCard(context, "Huawei P30 Pro", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
+              getProductCard(context, "NEX 3 5G", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fpocketnow.com%2Fwp-content%2Fuploads%2F2019%2F09%2F0079Fyh9ly1g6n8wce3s1j30u01hcqe5.jpg&f=1&nofb=1"),
+              getProductCard(context, "Apple iPhone 11", "https://static.esrgear.com/wp-content/uploads/2019/08/iPhone-11-Pro-Essential-Zero-Case-6.jpg"),
+
+              getProductCard(context, "Huawei P30 Pro", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
+              getProductCard(context, "Huawei Mate 30", "https://www.notebookcheck.com/fileadmin/Notebooks/News/_nc3/Huawei_Mate_30_Glas_Unibody_NBClogo_2.jpg"),
+              getProductCard(context, "Apple iPhone 11", "https://static.esrgear.com/wp-content/uploads/2019/08/iPhone-11-Pro-Essential-Zero-Case-6.jpg"),
+            ],
+          ), 
         ],
-      ),
+      ), 
     );
-    
-    
   }
 
-  Widget getProductCard(BuildContext context, String name) {
+  Widget getProductCard(BuildContext context, String name, String url) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      
-      width: width * .4,
-      padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
-        alignment: FractionalOffset.center,
-        child: Card(
-          child: InkWell(
-            splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
-              print('Card tapped.');
-            },
-            child: Container(
-              width: 300,
-              height: 100,
-              child: Text('$name'),
-            ),),
-          
-        ),
+      decoration: BoxDecoration(
+          shape: BoxShape.rectangle, // BoxShape.circle or BoxShape.retangle
+          //color: const Color(0xFF66BB6A),
+          boxShadow: [BoxShadow(
+            color: Colors.white10,
+            blurRadius: 2.0,
+          ),]
+      ),
+      width: width * .45,
+      padding: EdgeInsets.fromLTRB(2, 1, 2, 1),
+      alignment: FractionalOffset.center,
+      child: Card(
+        child: InkWell(
+          splashColor: Colors.blue.withAlpha(30),
+          onTap: () {
+            print('Card tapped.');
+          },
+          child: Container(
+            //width: width,
+            child: Column(children: <Widget>[
+              Image.network(url, fit: BoxFit.cover),
+              Text('$name'),
+            ],) 
+          ),),
+        
+      ),
     );
   }
 }
