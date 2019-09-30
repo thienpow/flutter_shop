@@ -86,10 +86,10 @@ class _HomePageState extends State<HomePage> {
     return 
       PageView(
         children: [
-          Front(),
+          FrontPage(),
           Snap("Snap screen"),
           Cart("Cart screen"),
-          Account("Account screen")
+          AccountPage()
         ],
         onPageChanged: onPageChanged,
         controller: _pageController,

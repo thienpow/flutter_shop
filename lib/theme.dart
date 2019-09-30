@@ -10,7 +10,7 @@ class ThemeChanger with ChangeNotifier {
     this._themeData = theme;
   }
 
-  getTheme() {
+  ThemeData getTheme() {
 
     bool isThemeDark = _themeData == ThemeData.dark();
     

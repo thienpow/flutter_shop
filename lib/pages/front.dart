@@ -8,12 +8,12 @@ import '../widgets/featuredCarousel.dart';
 import 'package:english_words/english_words.dart' as words;
 
 
-class Front extends StatefulWidget {
+class FrontPage extends StatefulWidget {
   @override
-  _FrontState createState() => _FrontState();
+  _FrontPageState createState() => _FrontPageState();
 }
 
-class _FrontState extends State<Front> {
+class _FrontPageState extends State<FrontPage> {
 
   final List<String> kWords = List.from(Set.from(words.all))..sort(
       (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase())
@@ -175,8 +175,8 @@ class _FrontState extends State<Front> {
 
 class MySliverAppBar extends SliverPersistentHeaderDelegate {
   double expandedHeight;
-  _FrontState parent;
-  MySliverAppBar(double expandedHeight, _FrontState parent) { 
+  _FrontPageState parent;
+  MySliverAppBar(double expandedHeight, _FrontPageState parent) { 
       this.expandedHeight = expandedHeight;
       this.parent = parent;
   }
