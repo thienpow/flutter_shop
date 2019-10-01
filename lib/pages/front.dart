@@ -215,7 +215,7 @@ class _FrontPageState extends State<FrontPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     
                     children: <Widget>[
-                      Text('$name'.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                      Text('$name'.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                       //TODO: add description param and pass in the text widget below.
                       Text('Descriptions here for $name', style: TextStyle(color: Colors.grey[500], fontWeight: FontWeight.normal, fontSize: 12)),
                       SizedBox(height: 3,),
