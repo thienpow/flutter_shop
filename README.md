@@ -1,7 +1,7 @@
 # flutter_shop
 
 Flutter Shopping Cart Sample
-
+![Image of Front Screen](/readme/screen-front1.png){:class="img-responsive"}
 ![Image of Front Screen](/readme/screen-front1.png){:height="50%" width="50%"}
 ![Image of Front Screen2](/readme/screen-front2.png){:height="50%" width="50%"}
 ## Getting Started
