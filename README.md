@@ -2,8 +2,8 @@
 
 Flutter Shopping Cart Sample
 
-![Image of Front Screen](/readme/screen-front1.png  | width=200)
-![Image of Front Screen2](/readme/screen-front2.png  | width=200)
+![Image of Front Screen](/readme/screen-front1.png){:width="200px"}
+![Image of Front Screen2](/readme/screen-front2.png){:width="200px"}
 
 ## Getting Started
 
