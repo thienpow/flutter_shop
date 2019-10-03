@@ -324,7 +324,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.redAccent[700], Colors.red[700]]
+                    colors: shrinkOffset < 80 ? [Colors.redAccent[700], Colors.red[700]] : [Colors.white, Colors.white70]
                 )
               ),
               //height: MediaQuery.of(context).size.height * 0.1,
