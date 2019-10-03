@@ -2,8 +2,8 @@
 
 Flutter Shopping Cart Sample
 
-<img src="/readme/screen-front1.png" width="400" height="790">
-<img src="/readme/screen-front2.png" width="400" height="790">
+<img src="/readme/screen-front1.png" width="300">
+<img src="/readme/screen-front2.png" width="300">
 
 ## Getting Started
 
