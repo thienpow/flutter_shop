@@ -66,7 +66,7 @@ class _FrontPageState extends State<FrontPage> {
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(30.0),
         ),
-        color: Colors.green[800],
+        color: Colors.redAccent[700],
         textColor: Colors.grey,
         disabledColor: Colors.grey,
         disabledTextColor: Colors.black,
@@ -78,7 +78,7 @@ class _FrontPageState extends State<FrontPage> {
           children: <Widget>[
             
             Expanded(
-              child: Text("mate 30", style: TextStyle(fontSize: 12.0),),
+              child: Text("搜索 Search", style: TextStyle(fontSize: 12.0),),
             ),
 
             ImageIcon(
@@ -103,7 +103,7 @@ class _FrontPageState extends State<FrontPage> {
         
           slivers: <Widget>[
             SliverPersistentHeader(
-              delegate: MySliverAppBar(250, this),
+              delegate: MySliverAppBar(218, this),
               pinned: true,
             ),
             SliverList(
@@ -118,7 +118,7 @@ class _FrontPageState extends State<FrontPage> {
     List<Widget> listItems = List();
     
     //***********  this is required to push the list lower at 220px more. ***********
-    listItems.add(SizedBox(height: 280,));
+    listItems.add(SizedBox(height: 200,));
     listItems.add(getTodayHotList(context));
 
     return listItems;
@@ -186,11 +186,11 @@ class _FrontPageState extends State<FrontPage> {
           shape: BoxShape.rectangle,
           boxShadow: [BoxShadow(
             color: Colors.white10,
-            blurRadius: 2.0,
+            blurRadius: 8.0,
           ),]
       ),
       width: width * .45,
-      padding: EdgeInsets.fromLTRB(1, 1, 1, 1),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       alignment: FractionalOffset.center,
       child: Card(
         child: InkWell(
@@ -247,47 +247,63 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
         onPressed: () {},
         child: Image.asset('assets/images/round/$name.png'),
         shape: CircleBorder(),
-        elevation: 4.0,
+        elevation: 8.0,
         fillColor: Colors.white,
         //padding: const EdgeInsets.all(0.0),
       );
   }
-
-  Widget getCategoryButtons() {
+  
+  Widget getCategoryButtons(double shrinkOffset) {
     return Container(
       //alignment: FractionalOffset.center,
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            SizedBox(height: 10),
-            Wrap(children: <Widget>[
-              getRoundButton('allcat'),
-              SizedBox(width: 10),
-              getRoundButton('mencloth'),
-              SizedBox(width: 10),
-              getRoundButton('womencloth'),
-              SizedBox(width: 10),
-              getRoundButton('sports'),
-              SizedBox(width: 10),
-              getRoundButton('electronics'),
-            ]
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(height: 10),
+          shrinkOffset < 80 ? 
+            Column(children: <Widget>[
+              Wrap(
+                spacing: 10,
+                runSpacing: 2,
+                children: <Widget>[
+                  getRoundButton('allcat'),
+                  getRoundButton('mencloth'),
+                  getRoundButton('womencloth'),
+                  getRoundButton('sports'),
+                  getRoundButton('electronics'),
+                ],
+              ),
+              SizedBox(height: 10),
+              Wrap(
+                spacing: 10,
+                runSpacing: 2,
+                children: <Widget>[
+                getRoundButton('phone'),
+                getRoundButton('computer'),
+                getRoundButton('automobiles'),
+                getRoundButton('jewellery'),
+                getRoundButton('garden'),
+              ]), ]
+            
+          ) : Wrap(
+                spacing: 6,
+                runSpacing: 10,
+                children: <Widget>[
+                  getRoundButton('allcat'),
+                  getRoundButton('mencloth'),
+                  getRoundButton('womencloth'),
+                  getRoundButton('sports'),
+                  getRoundButton('electronics'),
+                  getRoundButton('phone'),
+                  getRoundButton('computer'),
+                  getRoundButton('automobiles'),
+                  getRoundButton('jewellery'),
+                  getRoundButton('garden'), 
+                ],
             ),
-            SizedBox(height: 10),
-            Wrap(children: <Widget>[
-              getRoundButton('phone'),
-              SizedBox(width: 10),
-              getRoundButton('computer'),
-              SizedBox(width: 10),
-              getRoundButton('automobiles'),
-              SizedBox(width: 10),
-              getRoundButton('jewellery'),
-              SizedBox(width: 10),
-              getRoundButton('garden'),
-            ]
-            ),
-            //Expanded(flex: 1, child: Container(),),
-          ]
-      ),
+          ],
+        )
+               
     );
   }
 
@@ -299,7 +315,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
       overflow: Overflow.visible,
       children: [
 
-        // ********* Green Background ************
+        // ********* curve Background ************
         ClipPath(
             clipper: BottomWaveClipper(),
             child: Container(
@@ -308,19 +324,21 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.green[900], Colors.green[700]]
+                    colors: [Colors.redAccent[700], Colors.red[700]]
                 )
               ),
-              height: MediaQuery.of(context).size.height * 0.3,
+              //height: MediaQuery.of(context).size.height * 0.1,
 
               // ********* Search Button ************
               child: Column(
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                
                 children: <Widget>[
                   AppBar(
+                    primary: true,
                     title: parent.getDummySearchButton(),
                     backgroundColor: Colors.transparent,
-                    elevation: 0.0,
+                    elevation: 0,
                     actions: <Widget>[
                       //Adding the search widget in AppBar
                       //TODO: add important shortcut action here, either wallet or cart.
@@ -334,16 +352,16 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
 
         // ********* Category Round Buttons ************
         Positioned(
-          top: 380 - shrinkOffset * 1.1,
+          top: 250 - shrinkOffset * 0.75,
           left: MediaQuery.of(context).size.width * .05,
           child: Card(
               //color: Colors.green[800],
               color: Colors.transparent,
               elevation: 0,
               child: SizedBox(
-                height: 130,
+                height: 120,
                 width: MediaQuery.of(context).size.width * .9,
-                child: getCategoryButtons(),
+                child: getCategoryButtons(shrinkOffset),
               ),
           ),
         ),
@@ -351,12 +369,14 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
         // ********* Featured Slides ************
         
         Positioned(
-          top: 92,
-          bottom: -110,
+          left: 8,
+          top: 106,
+          right: 8,
+          bottom: -16,
           child: Opacity(
             opacity: (1 - shrinkOffset / expandedHeight),
             child: SizedBox(
-                height: expandedHeight -10,
+                height: expandedHeight,
                 width: MediaQuery.of(context).size.width,
                 child: FeaturedCarousel(),
               ),
@@ -371,7 +391,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
   double get maxExtent => expandedHeight;
 
   @override
-  double get minExtent => 250;
+  double get minExtent => expandedHeight;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;

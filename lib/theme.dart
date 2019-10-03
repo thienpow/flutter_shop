@@ -17,7 +17,7 @@ class ThemeChanger with ChangeNotifier {
     if (isThemeDark)
       return _themeData;
     else
-      return _themeData.copyWith(primaryColor: Colors.green);
+      return _themeData.copyWith(primaryColor: Colors.red);
   }
 
   setTheme(ThemeData theme) async {
@@ -29,7 +29,7 @@ class ThemeChanger with ChangeNotifier {
     if (isThemeDark)
       _themeData = theme;
     else
-      _themeData = theme.copyWith(primaryColor: Colors.green); //Todo: here we can make it follow the options chosen by user instead of forcing light theme equal to green.
+      _themeData = theme.copyWith(primaryColor: Colors.red); //Todo: here we can make it follow the options chosen by user instead of forcing light theme equal to green.
 
     notifyListeners();
   }
