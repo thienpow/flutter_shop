@@ -67,9 +67,9 @@ class _FrontPageState extends State<FrontPage> {
           borderRadius: new BorderRadius.circular(30.0),
         ),
         color: Colors.redAccent[700],
-        textColor: Colors.grey,
-        disabledColor: Colors.grey,
-        disabledTextColor: Colors.black,
+        textColor: Colors.white70,
+        //disabledColor: Colors.white10,
+        //disabledTextColor: Colors.white10,
         padding: EdgeInsets.fromLTRB(buttonWidth * .08, 2, buttonWidth * .05, 2),
         onPressed: () {
           showSearchPage(context, _searchDelegate);
@@ -78,7 +78,7 @@ class _FrontPageState extends State<FrontPage> {
           children: <Widget>[
             
             Expanded(
-              child: Text("搜索 Search", style: TextStyle(fontSize: 12.0),),
+              child: Text("搜索 Search", style: TextStyle(fontSize: 14.0),),
             ),
 
             ImageIcon(
@@ -131,7 +131,7 @@ class _FrontPageState extends State<FrontPage> {
     return Container(
       alignment: Alignment.topCenter,
       width: width,
-      padding: EdgeInsets.fromLTRB(width * .05, 0, width *.05, 0),
+      padding: EdgeInsets.fromLTRB(width * .01, 0, width *.01, 0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -141,9 +141,9 @@ class _FrontPageState extends State<FrontPage> {
             runSpacing: 20.0,
 
             children: <Widget>[
-              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.bigspark.com%2Fshrine%2F6823%2Foriginal-966be51a42.png&f=1&nofb=1"),
+              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", "https://i.postimg.cc/bwF1Hzs0/iphone11.png"),
               getProductCard(context, "OPPO R17", "\$800-\$1000", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.xda-developers.com%2Ffiles%2F2018%2F08%2FOPPO-R17.jpg&f=1&nofb=1"),
-              getProductCard(context, "Mi Mix Alpha", "\$2200-\$2500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fphone.mesramobile.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fxiaomi-mi-mix-alpha-price-malaysia-1.jpg&f=1&nofb=1"),
+              getProductCard(context, "Mi Mix Alpha", "\$2200-\$2500", "https://i.postimg.cc/nVB5RLb1/Mi-Mix-Alpha.png"),
               
               getProductCard(context, "Huawei Mate 30", "\$1200-\$1500", "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/huawei-mate30-4g/images/tl/overview/intro/mate30-4g-pic-kv-phoneback-green.png"),
               getProductCard(context, "Huawei P30 Pro", "\$1000-\$1200", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
@@ -151,7 +151,7 @@ class _FrontPageState extends State<FrontPage> {
 
               getProductCard(context, "Huawei P30 Pro", "\$1200-\$1500", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
               getProductCard(context, "NEX 3 5G", "\$1200-\$1500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fpocketnow.com%2Fwp-content%2Fuploads%2F2019%2F09%2F0079Fyh9ly1g6n8wce3s1j30u01hcqe5.jpg&f=1&nofb=1"),
-              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", "https://static.esrgear.com/wp-content/uploads/2019/08/iPhone-11-Pro-Essential-Zero-Case-6.jpg"),
+              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", ""),
 
             ],
           ), 
@@ -160,17 +160,17 @@ class _FrontPageState extends State<FrontPage> {
             spacing: 2.0,
             runSpacing: 20.0,
             children: <Widget>[              
-              getProductCard(context, "Mi Mix Alpha", "\$1200-\$1500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fphone.mesramobile.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fxiaomi-mi-mix-alpha-price-malaysia-1.jpg&f=1&nofb=1"),
-              getProductCard(context, "Huawei P30 Pro", "\$1200-\$1500", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
-              getProductCard(context, "Mi Mix Alpha", "\$1200-\$1500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fphone.mesramobile.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fxiaomi-mi-mix-alpha-price-malaysia-1.jpg&f=1&nofb=1"),
-              
-              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.bigspark.com%2Fshrine%2F6823%2Foriginal-966be51a42.png&f=1&nofb=1"),
-              getProductCard(context, "Huawei P30 Pro", "\$1200-\$1500", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
-              getProductCard(context, "NEX 3 5G", "\$1200-\$1500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fpocketnow.com%2Fwp-content%2Fuploads%2F2019%2F09%2F0079Fyh9ly1g6n8wce3s1j30u01hcqe5.jpg&f=1&nofb=1"),
-              
+              getProductCard(context, "Mi Mix Alpha", "\$1200-\$1500", "https://i.postimg.cc/nVB5RLb1/Mi-Mix-Alpha.png"),
               getProductCard(context, "Huawei P30 Pro", "\$1200-\$1500", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
               getProductCard(context, "Huawei Mate 30", "\$1200-\$1500", "https://www.notebookcheck.com/fileadmin/Notebooks/News/_nc3/Huawei_Mate_30_Glas_Unibody_NBClogo_2.jpg"),
-              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", "https://static.esrgear.com/wp-content/uploads/2019/08/iPhone-11-Pro-Essential-Zero-Case-6.jpg"),
+              
+              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", ""),
+              getProductCard(context, "NEX 3 5G", "\$1200-\$1500", "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fpocketnow.com%2Fwp-content%2Fuploads%2F2019%2F09%2F0079Fyh9ly1g6n8wce3s1j30u01hcqe5.jpg&f=1&nofb=1"),
+              getProductCard(context, "Mi Mix Alpha", "\$1200-\$1500", "https://i.postimg.cc/nVB5RLb1/Mi-Mix-Alpha.png"),
+              
+              getProductCard(context, "Huawei P30 Pro", "\$1200-\$1500", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
+              getProductCard(context, "Apple iPhone 11", "\$1200-\$1500", "https://i.postimg.cc/bwF1Hzs0/iphone11.png"),
+              getProductCard(context, "Huawei P30 Pro", "\$1200-\$1500", "https://assets.mspimages.in/wp-content/uploads/2018/12/Huawei-P30-Pro-Aurora.png"),
               
             ],
           ), 
@@ -185,16 +185,16 @@ class _FrontPageState extends State<FrontPage> {
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           boxShadow: [BoxShadow(
-            color: Colors.white10,
+            color: Colors.transparent,
             blurRadius: 8.0,
           ),]
       ),
-      width: width * .45,
+      width: width * .49,
       padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       alignment: FractionalOffset.center,
       child: Card(
         child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
+          splashColor: Colors.pink.withAlpha(30),
           onTap: () {
             print('Card tapped.');
           },
