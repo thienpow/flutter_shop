@@ -7,6 +7,8 @@ import '../widgets/featuredCarousel.dart';
 
 import 'package:english_words/english_words.dart' as words;
 
+import 'addToCart.dart';
+
 
 class FrontPage extends StatefulWidget {
   @override
@@ -32,6 +34,15 @@ class _FrontPageState extends State<FrontPage> {
     super.dispose();
   }
   
+
+  void moveTo() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddToCartScreen(),
+      ),
+    );
+  }
 
   //Shows Search result
   void showSearchPage(BuildContext context,
@@ -197,6 +208,8 @@ class _FrontPageState extends State<FrontPage> {
           splashColor: Colors.pink.withAlpha(30),
           onTap: () {
             print('Card tapped.');
+            //TODO: addToCart
+            moveTo();
           },
           child: Container(
             child: Column(children: <Widget>[
