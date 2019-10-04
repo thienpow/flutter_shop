@@ -35,7 +35,7 @@ class _FrontPageState extends State<FrontPage> {
   }
   
 
-  void moveTo() {
+  void showProductDetail(String name) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -207,9 +207,9 @@ class _FrontPageState extends State<FrontPage> {
         child: InkWell(
           splashColor: Colors.pink.withAlpha(30),
           onTap: () {
-            print('Card tapped.');
-            //TODO: addToCart
-            moveTo();
+            //print('Card tapped.');
+            //TODO: pass product ID to showProductDetail
+            showProductDetail(name);
           },
           child: Container(
             child: Column(children: <Widget>[
