@@ -17,9 +17,8 @@ already done:
 4. PageController -- multi tab feature using by PageController and BottomNavigationBar
 5. search -- search in appBar, with sample words only for now
 6. PageContent -- product gallery at frontpage
+7. AddToCart -- add to cart and view cart detail.
 
 in progress:
-
-7. AddToCart -- add to cart and view cart detail.
 8. Data -- would be using GraphQL for the catalog and cart data, Prisma Cloud.
 9. Security -- plan to use Firebase Auth... or maybe Apple ID for ios.
