@@ -5,9 +5,14 @@ import 'package:flutter_shop/pages/home.dart';
 import 'package:flutter_shop/pages/settings.dart';
 import './theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import "package:graphql_flutter/graphql_flutter.dart";
+import "data/graphQLConfiguration.dart";
 //import 'dart:io';
 //import 'package:flutter/services.dart';
 
+
+GraphQLConfiguration graphQLConfiguration = GraphQLConfiguration();
 
 void main() {
   SharedPreferences.getInstance().then((prefs) {
@@ -21,14 +26,17 @@ void main() {
           providers: [
             ChangeNotifierProvider<ThemeChanger>(builder: (_) => ThemeChanger(isThemeDark ? ThemeData.dark() : ThemeData.light()),),
           ],
-          child: new App(),
+          child: GraphQLProvider(
+            client: graphQLConfiguration.client,
+            child: CacheProvider(child: MyApp()),
+          ),
       ),
     );
   });
   
 }
 
-class App extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);

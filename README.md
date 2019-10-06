@@ -19,6 +19,8 @@ already done:
 6. PageContent -- product gallery at frontpage
 7. AddToCart -- add to cart and view cart detail.
 
+
 in progress:
+
 8. Data -- would be using GraphQL for the catalog and cart data, Prisma Cloud.
 9. Security -- plan to use Firebase Auth... or maybe Apple ID for ios.

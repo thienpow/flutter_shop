@@ -178,6 +178,7 @@ class _AddToCartScreenState extends State<AddToCartScreen> with TickerProviderSt
       ),
     );
   }
+  
   Widget getProductOptions() {
     return AnimatedOpacity(
       duration: Duration(milliseconds: 500),
