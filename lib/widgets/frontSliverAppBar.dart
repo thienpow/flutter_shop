@@ -8,17 +8,20 @@ import 'package:flutter_shop/widgets/bottomWave.dart';
 import 'package:flutter_shop/widgets/searchAppBar.dart';
 
 class FrontSliverAppBar extends SliverPersistentHeaderDelegate {
-  
-  double expandedHeight = 218;
 
   final List<String> kWords = List.from(Set.from(words.all))..sort(
       (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase())
   );
 
-  FrontSliverAppBar() { 
-      _searchDelegate = SearchAppBarDelegate(kWords);
+
+  FrontSliverAppBar(Function funcHandleSearch) { 
+    _funcHandleSearch = funcHandleSearch;
+    _searchDelegate = SearchAppBarDelegate(kWords);
   }
 
+  double expandedHeight = 218;
+
+  Function _funcHandleSearch;
   SearchAppBarDelegate _searchDelegate;
   
   //Shows Search result
@@ -30,9 +33,13 @@ class FrontSliverAppBar extends SliverPersistentHeaderDelegate {
     );
 
     if (selected != null) {
+      
+      //callback to let front page handle the query to server for the result being searched.
+      _funcHandleSearch("$selected");
+
       Scaffold.of(context).showSnackBar(
         SnackBar(
-          content: Text('Your Word Choice: $selected'),
+          content: Text('Retrieving data for: $selected'),
         ),
       );
     }

@@ -22,6 +22,14 @@ class _FrontPageState extends State<FrontPage> {
     super.dispose();
   }
   
+
+  handleSearch(String result) {
+    print("front page received search result: $result");
+    setState(() {
+      //
+    });
+  }
+
   void showProductDetail(String name) {
     Navigator.push(
       context,
@@ -40,7 +48,7 @@ class _FrontPageState extends State<FrontPage> {
         
           slivers: <Widget>[
             SliverPersistentHeader(
-              delegate: FrontSliverAppBar(),
+              delegate: FrontSliverAppBar(handleSearch),
               pinned: true,
             ),
             SliverList(

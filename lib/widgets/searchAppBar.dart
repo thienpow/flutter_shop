@@ -47,6 +47,10 @@ class SearchAppBarDelegate extends SearchDelegate<String> {
   }
 
   // Builds page to populate search results.
+  //TODO: make this to display a list of tag buttons, 
+  //*****  example, after search for "iphone", 
+  //*****  it will have a list of tag buttons of iphone6, iphone 6s, iphone X, iphone 11 etc... 
+  //*****  user click on the button then it will trigger the callback to handle the search result on front page.
   @override
   Widget buildResults(BuildContext context) {
     return Padding(
@@ -55,7 +59,7 @@ class SearchAppBarDelegate extends SearchDelegate<String> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text('===Your Word Choice==='),
+            Text('===Tap on the result below==='),
             GestureDetector(
               onTap: () {
                 //Define your action when clicking on result item.
