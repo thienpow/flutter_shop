@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_shop/pages/home.dart';
 import 'package:flutter_shop/pages/settings.dart';
-import './theme.dart';
+import 'package:flutter_shop/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import "package:graphql_flutter/graphql_flutter.dart";
-import "data/graphQLConfiguration.dart";
+import "package:flutter_shop/data/graphQLConfiguration.dart";
 //import 'dart:io';
 //import 'package:flutter/services.dart';
 

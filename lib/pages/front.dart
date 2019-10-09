@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_shop/widgets/frontSliverAppBar.dart';
-import 'addToCart.dart';
+import 'package:flutter_shop/pages/addToCart.dart';
 
 class FrontPage extends StatefulWidget {
   @override

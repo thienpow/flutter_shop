@@ -24,9 +24,10 @@ class FrontSliverAppBar extends SliverPersistentHeaderDelegate {
   Function _funcHandleSearch;
   SearchAppBarDelegate _searchDelegate;
   
+  
   //Shows Search result
-  void showSearchPage(BuildContext context,
-    SearchAppBarDelegate searchDelegate) async {
+  void showSearchPage(BuildContext context, SearchAppBarDelegate searchDelegate) async {
+
     final String selected = await showSearch<String>(
       context: context,
       delegate: searchDelegate,

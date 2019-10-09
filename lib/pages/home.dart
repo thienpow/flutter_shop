@@ -8,7 +8,7 @@ import 'package:flutter_shop/pages/account.dart';
 import 'package:flutter_shop/widgets/drawer.dart';
 
 import 'package:provider/provider.dart';
-import '../theme.dart';
+import 'package:flutter_shop/theme.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
     _pageController.dispose();
   }
   
-  void _onBarItemTapped(int index) {
+  void onBarItemTapped(int index) {
     _pageController.jumpToPage(index);
     //TODO: just in case you love animation for the page transition... use the line below.
     //_pageController.animateToPage(index, duration: const Duration(milliseconds: 10), curve: Curves.fastOutSlowIn);
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
       ],
       currentIndex: _currentPageIndex,
       //selectedItemColor: Colors.amber[800],
-      onTap: _onBarItemTapped,
+      onTap: onBarItemTapped,
       
     );
   }
